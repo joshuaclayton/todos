@@ -35,18 +35,9 @@ When /^I mark the todo "(.*?)" as completed$/ do |todo_name|
 end
 
 Then /^my list of incomplete todos should be:$/ do |table|
-  within 'ul.incomplete-todos' do
-    table.hashes.each_with_index do |row, index|
-      page.should have_css("li:nth-child(#{index + 1})", text: row[:name])
-    end
-    page.should have_css('li', count: table.hashes.length)
-  end
+  ensure_incomplete_todos_named table.hashes
 end
 
 Then /^my list of complete todos should be:$/ do |table|
-  within 'ul.complete-todos' do
-    table.hashes.each_with_index do |row, index|
-      page.should have_css("li:nth-child(#{index + 1})", text: row[:name])
-    end
-  end
+  ensure_complete_todos_named table.hashes
 end

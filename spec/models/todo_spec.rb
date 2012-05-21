@@ -5,8 +5,8 @@ describe Todo do
 
   context '.complete' do
     it 'returns only todos where completed_at is set' do
-      complete_todo = create(:todo, :completed_at => Time.now)
-      incomplete_todo = create(:todo, :completed_at => nil)
+      complete_todo = create(:todo, :complete)
+      incomplete_todo = create(:todo, :incomplete)
 
       Todo.complete.should == [complete_todo]
     end
@@ -14,8 +14,8 @@ describe Todo do
 
   context '.incomplete' do
     it 'returns only todos where completed_at is unset' do
-      complete_todo = create(:todo, :completed_at => Time.now)
-      incomplete_todo = create(:todo, :completed_at => nil)
+      complete_todo = create(:todo, :complete)
+      incomplete_todo = create(:todo, :incomplete)
 
       Todo.incomplete.should == [incomplete_todo]
     end
