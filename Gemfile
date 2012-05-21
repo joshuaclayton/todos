@@ -3,9 +3,11 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
 gem 'sqlite3'
+gem 'high_voltage'
 
 group :test do
   gem 'cucumber-rails'
+  gem 'rspec-rails'
   gem 'database_cleaner'
 end
 
