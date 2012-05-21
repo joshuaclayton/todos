@@ -1,3 +1,7 @@
+Given /^I have signed in$/ do
+  step %{I sign in as "person@example.com"}
+end
+
 When /^I sign in as "(.*?)"$/ do |email_address|
   visit root_path
   fill_in 'session[email]', with: email_address
