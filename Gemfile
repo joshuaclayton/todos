@@ -15,6 +15,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'evergreen'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'spork-rails'
