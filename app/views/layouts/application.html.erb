@@ -12,6 +12,10 @@
     <p data-current-user="<%= current_user.email %>"><%= current_user.email %></p>
   </header>
 
+  <% flash.keys.each do |key| %>
+    <%= content_tag :div, flash[key], class: "#{key} flash" %>
+  <% end %>
+
   <%= yield %>
 
 </body>

@@ -18,3 +18,7 @@ Then /^I should have no todos$/ do
     page.should have_no_css('li')
   end
 end
+
+When /^I view my todos$/ do
+  visit todos_path
+end

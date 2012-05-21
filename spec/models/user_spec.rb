@@ -21,4 +21,11 @@ describe User do
       current_user.todos.map(&:name).should == ['Todo 1', 'Todo 2']
     end
   end
+
+  context '#signed_in?' do
+    it 'is true' do
+      user = User.new('person@example.com')
+      user.should be_signed_in
+    end
+  end
 end

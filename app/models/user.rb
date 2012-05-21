@@ -8,4 +8,8 @@ class User
   def todos
     Todo.where(owner_email: @email)
   end
+
+  def signed_in?
+    true
+  end
 end

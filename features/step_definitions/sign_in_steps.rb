@@ -15,3 +15,8 @@ Then /^I should see that I have signed in as "(.*?)"$/ do |email_address|
 
   page.should have_css("h1", text: /todos/i)
 end
+
+Then /^I should be prompted to sign in$/ do
+  page.should have_css('.flash.notice', text: 'Please sign in')
+  page.should have_css("form[action='#{sessions_path}']")
+end
