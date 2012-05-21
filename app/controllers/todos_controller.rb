@@ -2,7 +2,8 @@ class TodosController < ApplicationController
   before_filter :authenticate
 
   def index
-    @todos = current_user.todos
+    @incomplete_todos = current_user.todos.incomplete
+    @complete_todos = current_user.todos.complete
   end
 
   def new

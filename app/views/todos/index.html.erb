@@ -1,8 +1,19 @@
 <h1>My Todos</h1>
 <%= link_to 'Create a new todo', new_todo_path %>
 
-<ul class='todos'>
-  <%= @todos.each do |todo| %>
-    <li></li>
+<ul class='incomplete-todos'>
+  <%= @incomplete_todos.each do |todo| %>
+    <li id="<%= dom_id(todo) %>">
+      <%= todo.name %>
+      <%= link_to 'complete', todo_completions_path(todo), method: 'post', class: 'complete' %>
+    </li>
+  <% end %>
+</ul>
+
+<ul class='complete-todos'>
+  <%= @complete_todos.each do |todo| %>
+    <li id="<%= dom_id(todo) %>">
+      <%= todo.name %>
+    </li>
   <% end %>
 </ul>

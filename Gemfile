@@ -15,6 +15,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'spork-rails'
   gem 'cucumber-rails', require: false
