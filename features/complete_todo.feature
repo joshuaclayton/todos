@@ -4,7 +4,8 @@ Feature: Complete a todo
   I should be able to complete todos
 
   Scenario: Complete a todo
-    Given I have signed in
+    Given today is "May 21, 2012"
+    And I have signed in
     And I have the following todos:
       | name      |
       | Buy milk  |
@@ -16,5 +17,5 @@ Feature: Complete a todo
       | Buy milk |
       | Buy eggs |
     And my list of complete todos should be:
-      | name      |
-      | Buy flour |
+      | name      | completed_at |
+      | Buy flour | 21 May       |

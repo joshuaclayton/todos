@@ -5,6 +5,9 @@ gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'high_voltage'
 gem 'dynamic_form'
+gem 'compass-rails'
+gem 'compass-960-plugin', require: 'ninesixty'
+gem 'bourbon'
 
 group :development do
   gem 'guard-spork'
@@ -15,6 +18,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'timecop'
   gem 'evergreen'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'

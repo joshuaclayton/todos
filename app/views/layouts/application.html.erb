@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Todos</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Todos</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class='container'>
+      <section>
+        <header>
+          <h1>Todos</h1>
+          <p data-current-user="<%= current_user.email %>"><%= current_user.email %></p>
+        </header>
 
-  <header>
-    <p data-current-user="<%= current_user.email %>"><%= current_user.email %></p>
-  </header>
+        <% flash.keys.each do |key| %>
+          <%= content_tag :div, flash[key], class: "#{key} flash" %>
+        <% end %>
 
-  <% flash.keys.each do |key| %>
-    <%= content_tag :div, flash[key], class: "#{key} flash" %>
-  <% end %>
-
-  <%= yield %>
-
-</body>
+        <%= yield %>
+      </section>
+    </div>
+  </body>
 </html>

@@ -13,7 +13,7 @@ Then /^I should see that I have signed in as "(.*?)"$/ do |email_address|
     page.should have_css("[data-current-user='#{email_address}']")
   end
 
-  page.should have_css("h1", text: /todos/i)
+  page.should have_css('ul.incomplete-todos')
 end
 
 Then /^I should be prompted to sign in$/ do

@@ -1,0 +1,41 @@
+@import "960/grid";
+
+$ninesixty-grid-width: 600px;
+
+@mixin clearfix {
+  zoom:1;
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+body {
+  .container {
+    @include grid-container;
+    @include clearfix;
+
+    & > section {
+      @include grid(12);
+    }
+  }
+
+  header {
+    @include clearfix;
+
+    h1 {
+      @include grid(4);
+      @include alpha;
+    }
+
+    p {
+      @include grid(8);
+      @include omega;
+    }
+  }
+}

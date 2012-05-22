@@ -1,19 +1,25 @@
-<h1>My Todos</h1>
-<%= link_to 'Create a new todo', new_todo_path %>
+<p class='create'><%= link_to 'Create a new todo', new_todo_path %></p>
 
-<ul class='incomplete-todos'>
-  <%= @incomplete_todos.each do |todo| %>
-    <li id="<%= dom_id(todo) %>">
-      <%= todo.name %>
-      <%= link_to 'complete', todo_completions_path(todo), method: 'post', class: 'complete' %>
-    </li>
-  <% end %>
-</ul>
+<section>
+  <h3>Incomplete Todos</h3>
+  <ul class='incomplete-todos'>
+    <% @incomplete_todos.each do |todo| %>
+      <li id="<%= dom_id(todo) %>">
+        <%= todo.name %>
+        <%= link_to 'complete', todo_completions_path(todo), method: 'post', class: 'complete meta' %>
+      </li>
+    <% end %>
+  </ul>
+</section>
 
-<ul class='complete-todos'>
-  <%= @complete_todos.each do |todo| %>
-    <li id="<%= dom_id(todo) %>">
-      <%= todo.name %>
-    </li>
-  <% end %>
-</ul>
+<section>
+  <h3>Complete Todos</h3>
+  <ul class='complete-todos'>
+    <% @complete_todos.each do |todo| %>
+      <li id="<%= dom_id(todo) %>">
+        <%= todo.name %>
+        <span class='meta'><%= todo.completed_at.to_date.to_s(:short) %></span>
+      </li>
+    <% end %>
+  </ul>
+</section>
