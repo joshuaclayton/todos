@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_filter :authenticate
 
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
   end
 
   def new
@@ -10,7 +10,9 @@ class TodosController < ApplicationController
   end
 
   def create
-    Todo.create(params[:todo])
+    todo = Todo.new(params[:todo])
+    todo.user = current_user
+    todo.save
     redirect_to todos_path
   end
 end

@@ -10,8 +10,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_email
 
+  def current_user
+    if current_email
+      User.new(current_email)
+    else
+      Guest.new
+    end
+  end
+
   def authenticate
-    if !current_email
+    if !current_user.signed_in?
       redirect_to new_session_path
     end
   end
