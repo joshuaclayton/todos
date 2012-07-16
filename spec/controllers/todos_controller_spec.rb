@@ -17,5 +17,10 @@ describe TodosController, '#index' do
       get :index
       should respond_with(:success)
     end
+
+    it 'assigns @todos' do
+      get :index
+      should assign_to(:todos)
+    end
   end
 end
