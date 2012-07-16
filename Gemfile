@@ -34,6 +34,7 @@ end
 group :test do
   gem 'spork'
   gem 'cucumber-rails', require: false
+  gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'therubyracer', require: 'v8'
 end
