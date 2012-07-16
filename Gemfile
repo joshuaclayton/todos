@@ -23,12 +23,17 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'guard-spork'
+end
+
 group :development, :test do
   gem 'rspec-rails'
 end
 
 group :test do
-  gem 'cucumber-rails'
+  gem 'spork'
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'therubyracer', require: 'v8'
 end
