@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     session[:email]
   end
   helper_method :current_email
+
+  def authenticate
+    if !current_email
+      redirect_to new_session_path
+    end
+  end
 end
