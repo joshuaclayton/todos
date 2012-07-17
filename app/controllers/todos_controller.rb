@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, only: [:create]
 
   def index
     @todos = current_user.todos

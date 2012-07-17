@@ -8,7 +8,7 @@ When /^I view my todos$/ do
   visit todos_path
 end
 
-When /^I create the todo "(.*?)"$/ do |todo_description|
+When /^I (?:attempt to )?create the todo "(.*?)"$/ do |todo_description|
   visit todos_path
   click_link 'Create a Todo'
   fill_in 'Description', with: todo_description

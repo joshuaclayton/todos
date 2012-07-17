@@ -12,4 +12,10 @@ describe Guest do
       Guest.new.email.should == ''
     end
   end
+
+  context '#todos' do
+    it 'returns an empty array' do
+      Guest.new.todos.should == []
+    end
+  end
 end

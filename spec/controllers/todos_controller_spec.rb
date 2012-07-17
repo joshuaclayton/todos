@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe TodosController, '#index' do
   context 'not signed in' do
-    it 'redirects me to create a new session' do
+    it 'assigns @todos as an empty array' do
       get :index
-      should redirect_to(new_session_path)
+      should assign_to(:todos).with([])
     end
   end
 
