@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Todos</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Todos</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if current_user.signed_in? %>
+      <p data-current-user='<%= current_user.email %>'>
+        <%= current_user.email %>
+      </p>
 
-  <% if current_user.signed_in? %>
-    <p data-current-user='<%= current_user.email %>'>
-      <%= current_user.email %>
-    </p>
+      <%= link_to 'Sign out', session_path, method: :delete %>
+    <% end %>
 
-    <%= link_to 'Sign out', session_path, method: :delete %>
-  <% end %>
-
-<%= yield %>
-
-</body>
+    <%= yield %>
+  </body>
 </html>
