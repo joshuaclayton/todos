@@ -6,6 +6,8 @@ end
 Given /^I am not signed in$/ do
   visit todos_path
   page.should have_css('#new_session')
+  page.should have_no_css('[data-current-user]')
+  page.should have_no_css('a', text: 'Sign out')
 end
 
 When /^I sign in as "(.*?)"$/ do |email_address|

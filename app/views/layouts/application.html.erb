@@ -8,11 +8,14 @@
 </head>
 <body>
 
-  <p data-current-user='<%= current_user.email %>'>
-    <%= current_user.email %>
-  </p>
+  <% if current_user.signed_in? %>
+    <p data-current-user='<%= current_user.email %>'>
+      <%= current_user.email %>
+    </p>
 
-  <%= link_to 'Sign out', session_path, method: :delete %>
+    <%= link_to 'Sign out', session_path, method: :delete %>
+  <% end %>
+
 <%= yield %>
 
 </body>
