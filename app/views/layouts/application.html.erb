@@ -8,8 +8,8 @@
 </head>
 <body>
 
-  <p data-current-user='<%= current_email %>'>
-    <%= current_email %>
+  <p data-current-user='<%= current_user.email %>'>
+    <%= current_user.email %>
   </p>
 
   <%= link_to 'Sign out', session_path, method: :delete %>

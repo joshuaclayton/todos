@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   def current_email
     session[:email]
   end
-  helper_method :current_email
 
   def current_user
     if current_email
@@ -17,6 +16,7 @@ class ApplicationController < ActionController::Base
       Guest.new
     end
   end
+  helper_method :current_user
 
   def authenticate
     if !current_user.signed_in?
