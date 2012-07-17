@@ -1,6 +1,8 @@
 Given /^I am signed in as "(.*?)"$/ do |email_address|
-  When %{I sign in as "#{email_address}"}
-  Then %{I should be signed in as "#{email_address}"}
+  steps %{
+    When I sign in as "#{email_address}"
+    Then I should be signed in as "#{email_address}"
+  }
 end
 
 Given /^I am not signed in$/ do
