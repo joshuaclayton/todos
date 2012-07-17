@@ -26,23 +26,3 @@ Then /^I should not see the todo "(.*?)"$/ do |todo_description|
     page.should have_no_css('li', text: todo_description)
   end
 end
-
-When /^I complete my todo "(.*?)"$/ do |todo_description|
-  visit todos_path
-  todo = Todo.find_by_description(todo_description)
-  find("li##{dom_id(todo)} a").click
-end
-
-Then /^the todo "(.*?)" is complete$/ do |todo_description|
-  within 'ul#my-todos' do
-    page.should have_css('li.complete', text: todo_description)
-  end
-end
-
-Then /^the todo "(.*?)" is incomplete$/ do |todo_description|
-  within 'ul#my-todos' do
-    page.should have_css('li:not(.complete)', text: todo_description)
-  end
-end
-
-World ActionController::RecordIdentifier
