@@ -8,10 +8,12 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  require 'draper/test/rspec_integration'
 
   RSpec.configure do |config|
     config.infer_base_class_for_anonymous_controllers = false
     config.order = "random"
+    config.include FactoryGirl::Syntax::Methods
   end
 end
 

@@ -58,9 +58,17 @@ GEM
       nokogiri (>= 1.5.0)
     database_cleaner (0.8.0)
     diff-lcs (1.1.3)
+    draper (0.16.0)
+      actionpack (~> 3.2)
+      activesupport (~> 3.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.0.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.0.0)
+      factory_girl (~> 4.0.0)
+      railties (>= 3.0.0)
     ffi (1.0.11)
     gherkin (2.11.1)
       json (>= 1.4.6)
@@ -77,7 +85,7 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
-    json (1.7.3)
+    json (1.7.4)
     libv8 (3.3.10.4)
     libwebsocket (0.1.4)
       addressable
@@ -157,7 +165,7 @@ GEM
     sqlite3 (1.3.6)
     therubyracer (0.9.9)
       libv8 (~> 3.3.10)
-    thor (0.15.4)
+    thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.10)
       polyglot
@@ -176,6 +184,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
+  draper
+  factory_girl_rails
   guard-spork
   high_voltage
   jquery-rails

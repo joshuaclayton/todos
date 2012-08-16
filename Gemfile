@@ -7,6 +7,7 @@ gem 'high_voltage'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'draper'
 
 
 # Gems used only for assets and not required
@@ -37,6 +38,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'therubyracer', require: 'v8'
+  gem 'factory_girl_rails'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

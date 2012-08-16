@@ -2,9 +2,9 @@
 
 <ul id='my-todos'>
   <% @todos.each do |todo| %>
-    <li class='<%= todo_state todo %>' id='<%= dom_id todo %>'>
+    <%= todo.list_item do %>
       <%= todo.description %>
-      <%= completion_link todo %>
-    </li>
+      <%= todo.completion_link %>
+    <% end %>
   <% end %>
 </ul>
