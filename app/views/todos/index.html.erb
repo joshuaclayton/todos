@@ -1,10 +1,5 @@
 <%= link_to 'Create a Todo', new_todo_path %>
 
 <ul id='my-todos'>
-  <% @todos.each do |todo| %>
-    <%= todo.list_item do %>
-      <%= todo.description %>
-      <%= todo.completion_link %>
-    <% end %>
-  <% end %>
+  <%= render @todos %>
 </ul>
