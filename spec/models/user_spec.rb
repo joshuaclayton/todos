@@ -27,7 +27,7 @@ describe User do
     end
 
     def create_todo_owned_by(email)
-      Todo.new.tap do |todo|
+      Todo.new(description: 'get milk').tap do |todo|
         todo.owner_email = email
         todo.save
       end
