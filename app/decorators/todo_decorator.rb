@@ -34,7 +34,7 @@ class TodoDecorator < Draper::Base
   end
 
   def state
-    if completed_at
+    if completed_at?
       'complete'
     end
   end
