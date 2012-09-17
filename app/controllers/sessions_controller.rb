@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    cookies[:current_user] = params[:user][:email]
+    self.current_email = params[:user][:email]
     redirect_to root_path
   end
 end

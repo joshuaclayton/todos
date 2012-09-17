@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class='current-user'><%= cookies[:current_user] %></p>
+  <p class='current-user'><%= current_user.email %></p>
 <%= yield %>
 
 </body>
