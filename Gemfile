@@ -8,12 +8,17 @@ gem 'high_voltage'
 
 gem 'sqlite3'
 
+group :development do
+  gem 'guard-spork'
+  gem 'rb-fsevent', '~> 0.9.1'
+end
+
 group :development, :test do
   gem 'rspec-rails'
 end
 
 group :test do
-  gem 'cucumber-rails', '~> 1.3'
+  gem 'cucumber-rails', '~> 1.3', require: false
   gem 'database_cleaner'
 end
 
