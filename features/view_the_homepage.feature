@@ -6,3 +6,8 @@ Feature: View the homepage
   Scenario: Learn about the application
     When I go to the homepage
     Then I should be able to gather information about the site
+
+  Scenario: Sign up for an account
+    When I go to the homepage
+    And I sign up as "john@example.com"
+    Then I should be signed in as "john@example.com"
