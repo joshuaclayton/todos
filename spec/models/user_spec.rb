@@ -12,3 +12,12 @@ describe User, 'signed_in?' do
     expect(User.new('john@example.com')).to be_signed_in
   end
 end
+
+describe User, 'todos' do
+  it 'return todos whose owner_email is the user email' do
+    owned_todo = create(:todo, owner_email: 'owner@example.com')
+    not_owned_todo = create(:todo, owner_email: 'not-owner@example.com')
+
+    expect(User.new('owner@example.com').todos).to eq [owned_todo]
+  end
+end

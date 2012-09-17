@@ -20,6 +20,8 @@ end
 group :test do
   gem 'cucumber-rails', '~> 1.3', require: false
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
 
 # Gems used only for assets and not required
