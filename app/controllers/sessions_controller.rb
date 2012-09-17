@@ -6,4 +6,9 @@ class SessionsController < ApplicationController
     self.current_email = params[:user][:email]
     redirect_to root_path
   end
+
+  def destroy
+    self.current_email = nil
+    redirect_to root_path
+  end
 end
