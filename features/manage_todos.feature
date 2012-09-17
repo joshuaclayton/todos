@@ -23,6 +23,7 @@ Feature: Manage todos
       | Go to the mall          |
       | Go to school            |
 
+  @javascript
   Scenario: Complete a todo
     Given I have signed in as "john@example.com"
     When I create a todo titled "Buy milk"

@@ -11,7 +11,7 @@ When /^I create a todo titled "(.*?)"$/ do |title|
 end
 
 When /^I complete the todo "(.*?)"$/ do |title|
-  find("li:contains('#{title}') a:contains('Complete')").click
+  find("li:contains('#{title}') input[type='checkbox']").click
 end
 
 Then /^I should see the following todos:$/ do |table|

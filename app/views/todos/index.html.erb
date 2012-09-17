@@ -1,10 +1,10 @@
 <%= link_to 'Create a Todo', new_todo_path %>
 
-<ul>
+<ul class='todos'>
   <% @todos.each do |todo| %>
-    <li class="<%= 'complete' if todo.completed? %>">
+    <li data-id='<%= todo.id %>' class="<%= 'complete' if todo.completed? %>">
       <%= todo.title %>
-      <%= link_to 'Complete', todo_completion_path(todo), method: :post %>
+      <input type='checkbox' />
     </li>
   <% end %>
 </ul>
