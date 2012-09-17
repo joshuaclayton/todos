@@ -22,3 +22,9 @@ Feature: Manage todos
       | Go to the grocery store |
       | Go to the mall          |
       | Go to school            |
+
+  Scenario: Complete a todo
+    Given I have signed in as "john@example.com"
+    When I create a todo titled "Buy milk"
+    And I complete the todo "Buy milk"
+    Then "Buy milk" should be completed
