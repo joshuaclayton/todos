@@ -18,6 +18,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', require: false
   gem 'cucumber-rails', '~> 1.3', require: false
   gem 'database_cleaner'
   gem 'shoulda-matchers'
