@@ -20,3 +20,21 @@ describe Todo, '#completed?' do
     expect(todo).to_not be_completed
   end
 end
+
+describe Todo, '#mark_complete' do
+  it 'marks the todo completed' do
+    todo = FactoryGirl.create(:todo)
+    todo.mark_complete
+    todo.reload
+    expect(todo).to be_completed
+  end
+end
+
+describe Todo, '#mark_incomplete' do
+  it 'marks the todo incomplete' do
+    todo = FactoryGirl.create(:todo, :completed)
+    todo.mark_incomplete
+    todo.reload
+    expect(todo).to_not be_completed
+  end
+end
