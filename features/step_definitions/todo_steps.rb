@@ -15,3 +15,19 @@ Then /^I should see the todo "(.*?)"$/ do |title|
     expect(page).to have_css 'li', text: title
   end
 end
+
+Given /^"(.*?)" has (\d+) todos$/ do |email, todo_count|
+  todo_count = todo_count.to_i
+  FactoryGirl.create_list :todo, todo_count, owner_email: email
+end
+
+When /^I view my todos$/ do
+  visit todos_path
+end
+
+Then /^I should see (\d+) todos$/ do |todo_count|
+  todo_count = todo_count.to_i
+  within 'ul.todos' do
+    expect(all('li').count).to eq todo_count
+  end
+end
