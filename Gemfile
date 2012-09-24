@@ -16,6 +16,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'simplecov'
 end
 
 # Gems used only for assets and not required
