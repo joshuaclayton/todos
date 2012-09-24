@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p data-role='current-user-email'><%= cookies[:current_email] %></p>
+  <p data-role='current-user-email'><%= current_user.email %></p>
 <%= yield %>
 
 </body>
