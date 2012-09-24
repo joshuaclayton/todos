@@ -31,3 +31,15 @@ Then /^I should see (\d+) todos$/ do |todo_count|
     expect(all('li').count).to eq todo_count
   end
 end
+
+When /^I complete the todo "(.*?)"$/ do |title|
+  within 'ul.todos' do
+    find("li:contains('#{title}') a").click
+  end
+end
+
+Then /^"(.*?)" should be marked completed$/ do |title|
+  within 'ul.todos' do
+    expect(page).to have_css "li.completed:contains('#{title}')"
+  end
+end

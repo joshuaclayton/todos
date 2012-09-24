@@ -4,4 +4,8 @@ class Todo < ActiveRecord::Base
   def user=(user)
     self.owner_email = user.email
   end
+
+  def completed?
+    completed_at?
+  end
 end
