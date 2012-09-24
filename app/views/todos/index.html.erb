@@ -1,0 +1,6 @@
+<ul class='todos'>
+  <% @todos.each do |todo| %>
+    <li><%= todo.title %></li>
+  <% end %>
+</ul>
+<%= link_to 'Create a Todo', new_todo_path, rel: 'create-todo' %>
