@@ -43,3 +43,15 @@ Then /^"(.*?)" should be marked completed$/ do |title|
     expect(page).to have_css "li.completed:contains('#{title}')"
   end
 end
+
+When /^I mark the todo "(.*?)" incomplete$/ do |title|
+  within 'ul.todos' do
+    find("li:contains('#{title}') a").click
+  end
+end
+
+Then /^"(.*?)" should not be marked completed$/ do |title|
+  within 'ul.todos' do
+    expect(page).to have_css "li:contains('#{title}'):not(.completed)"
+  end
+end
