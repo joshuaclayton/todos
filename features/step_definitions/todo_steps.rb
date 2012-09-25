@@ -1,7 +1,6 @@
-Given /^I have signed in$/ do
-  visit root_path
-  fill_in 'Email', with: 'person@example.com'
-  click_button 'Sign In'
+Given /^"(.*?)" has (\d+) todos$/ do |email, todo_count|
+  todo_count = todo_count.to_i
+  FactoryGirl.create_list :todo, todo_count, owner_email: email
 end
 
 When /^I create a todo titled "(.*?)"$/ do |title|
@@ -10,19 +9,14 @@ When /^I create a todo titled "(.*?)"$/ do |title|
   click_button 'Create Todo'
 end
 
+When /^I view my todos$/ do
+  visit todos_path
+end
+
 Then /^I should see the todo "(.*?)"$/ do |title|
   within 'ul.todos' do
     expect(page).to have_css 'li', text: title
   end
-end
-
-Given /^"(.*?)" has (\d+) todos$/ do |email, todo_count|
-  todo_count = todo_count.to_i
-  FactoryGirl.create_list :todo, todo_count, owner_email: email
-end
-
-When /^I view my todos$/ do
-  visit todos_path
 end
 
 Then /^I should see (\d+) todos$/ do |todo_count|
@@ -39,9 +33,7 @@ When /^I complete the todo "(.*?)"$/ do |title|
 end
 
 Then /^"(.*?)" should be marked completed$/ do |title|
-  within 'ul.todos' do
-    expect(page).to have_css "li.completed:contains('#{title}')"
-  end
+  expect(complete_todos).to include(title)
 end
 
 When /^I mark the todo "(.*?)" incomplete$/ do |title|
@@ -51,7 +43,5 @@ When /^I mark the todo "(.*?)" incomplete$/ do |title|
 end
 
 Then /^"(.*?)" should not be marked completed$/ do |title|
-  within 'ul.todos' do
-    expect(page).to have_css "li:contains('#{title}'):not(.completed)"
-  end
+  expect(incomplete_todos).to include(title)
 end

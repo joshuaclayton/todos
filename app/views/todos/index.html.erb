@@ -1,6 +1,6 @@
 <ul class='todos'>
   <% @todos.each do |todo| %>
-    <li class='<%= 'completed' if todo.completed? %>'>
+    <li class='<%= 'completed' if todo.completed? %>' data-id='<%= todo.id %>'>
       <%= todo.title %>
       <% if todo.completed? %>
         <%= link_to 'Incomplete', todo_completion_path(todo), method: :delete %>
