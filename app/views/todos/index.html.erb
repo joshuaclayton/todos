@@ -4,7 +4,11 @@
   <% @todos.each do |todo| %>
     <li data-id='<%= todo.id %>' class='<%= 'complete' if todo.completed? %>'>
       <%= todo.title %>
-      <%= link_to 'Complete', todo_completion_path(todo), method: :post %>
+      <% if !todo.completed? %>
+        <%= link_to 'Complete', todo_completion_path(todo), method: :post %>
+      <% else %>
+        <%= link_to 'Incomplete', todo_completion_path(todo), method: :delete %>
+      <% end %>
     </li>
   <% end %>
 </ol>

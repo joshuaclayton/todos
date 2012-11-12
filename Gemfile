@@ -16,6 +16,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'timecop'
 end
 
 # Gems used only for assets and not required

@@ -19,3 +19,23 @@ describe Todo, '#completed?' do
     expect(todo).to be_completed
   end
 end
+
+describe Todo, '#mark_complete' do
+  it 'sets completed_at to Time.now' do
+    Timecop.freeze Time.now do
+      todo = Todo.create
+      todo.mark_complete
+      todo.reload
+      expect(todo.completed_at.to_i).to eq Time.now.to_i
+    end
+  end
+end
+
+describe Todo, '#mark_incomplete' do
+  it 'sets completed_at to nil' do
+    todo = Todo.create(completed_at: Time.now)
+    todo.mark_incomplete
+    todo.reload
+    expect(todo.completed_at).to be_nil
+  end
+end

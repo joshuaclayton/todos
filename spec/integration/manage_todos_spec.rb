@@ -4,7 +4,8 @@ feature 'Manage todos' do
   scenario 'create a new todo' do
     sign_in_as 'person@example.com'
     create_todo_titled 'Buy eggs'
-    user_should_see_todo_titled 'Buy eggs'
+
+    expect(todo_titled('Buy eggs')).to be_visible
   end
 
   scenario 'view only todos the user has created' do
@@ -13,14 +14,22 @@ feature 'Manage todos' do
 
     sign_in_as 'me@example.com'
 
-    user_should_not_see_todo_titled 'Lay eggs'
+    expect(todo_titled('Lay eggs')).not_to be_visible
   end
 
   scenario 'complete my todos' do
     sign_in_as 'person@example.com'
     create_todo_titled 'Buy eggs'
-    complete_todo_titled 'Buy eggs'
-    user_should_see_completed_todo_titled 'Buy eggs'
+    todo_titled('Buy eggs').mark_complete
+    expect(todo_titled('Buy eggs')).to be_complete
+  end
+
+  scenario 'mark completed todo as incomplete' do
+    sign_in_as 'person@example.com'
+    create_todo_titled 'Buy eggs'
+    todo_titled('Buy eggs').mark_complete
+    todo_titled('Buy eggs').mark_incomplete
+    expect(todo_titled('Buy eggs')).not_to be_complete
   end
 
   def create_todo_titled(title)
@@ -29,29 +38,36 @@ feature 'Manage todos' do
     click_button 'Create'
   end
 
-  def user_should_see_todo_titled(title)
-    within 'ol.todos' do
-      expect(page).to have_css 'li', text: title
-    end
-  end
-
-  def user_should_see_completed_todo_titled(title)
-    within 'ol.todos' do
-      expect(page).to have_css 'li.complete', text: title
-    end
-  end
-
-  def user_should_not_see_todo_titled(title)
-    within 'ol.todos' do
-      expect(page).not_to have_css 'li', text: title
-    end
-  end
-
-  def complete_todo_titled(title)
+  def todo_titled(title)
     todo = Todo.where(title: title).first
+    TodoOnPage.new(todo)
+  end
 
-    within "[data-id='#{todo.id}']" do
-      click_link 'Complete'
+  class TodoOnPage < Struct.new(:todo)
+    include Capybara::DSL
+
+    def mark_complete
+      within "[data-id='#{todo.id}']" do
+        click_link 'Complete'
+      end
+    end
+
+    def mark_incomplete
+      within "[data-id='#{todo.id}']" do
+        click_link 'Incomplete'
+      end
+    end
+
+    def visible?
+      within 'ol.todos' do
+        page.has_css? 'li', text: todo.title
+      end
+    end
+
+    def complete?
+      within 'ol.todos' do
+        page.has_css? 'li.complete', text: todo.title
+      end
     end
   end
 end
