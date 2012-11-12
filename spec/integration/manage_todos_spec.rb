@@ -7,6 +7,15 @@ feature 'Manage todos' do
     user_should_see_todo_titled 'Buy eggs'
   end
 
+  scenario 'view only todos the user has created' do
+    sign_in_as 'other@example.com'
+    create_todo_titled 'Lay eggs'
+
+    sign_in_as 'me@example.com'
+
+    user_should_not_see_todo_titled 'Lay eggs'
+  end
+
   def create_todo_titled(title)
     click_link 'Create a new todo'
     fill_in 'Title', with: title
@@ -16,6 +25,12 @@ feature 'Manage todos' do
   def user_should_see_todo_titled(title)
     within 'ol.todos' do
       expect(page).to have_css 'li', text: title
+    end
+  end
+
+  def user_should_not_see_todo_titled(title)
+    within 'ol.todos' do
+      expect(page).not_to have_css 'li', text: title
     end
   end
 end

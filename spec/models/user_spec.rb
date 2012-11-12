@@ -13,3 +13,14 @@ describe User, '#signed_in?' do
     expect(user).to be_signed_in
   end
 end
+
+describe User, '#todos' do
+  it 'returns todos whose owner is the user email' do
+    user = User.new('john@example.com')
+
+    todo_owned_by_me = Todo.create!(owner: user)
+    todo_not_owned_by_me = Todo.create!
+
+    expect(user.todos).to eq [todo_owned_by_me]
+  end
+end
