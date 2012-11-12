@@ -9,6 +9,7 @@ feature 'Viewing the homepage' do
 
   scenario 'sign in to the application' do
     visit root_path
+    expect(page).to have_no_css '.welcome'
     fill_in 'Email', with: 'person@example.com'
     click_button 'Sign in'
     expect(page).to have_css '.welcome', text: 'Welcome, person@example.com'

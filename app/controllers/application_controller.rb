@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def current_email
-    session[:current_email]
+  def current_user
+    if session[:current_email]
+      User.new(session[:current_email])
+    else
+      NullUser.new
+    end
   end
-  helper_method :current_email
+  helper_method :current_user
 
   private
 

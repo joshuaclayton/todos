@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class='welcome'>Welcome, <%= current_email %></p>
+  <% if current_user.signed_in? %>
+    <p class='welcome'>Welcome, <%= current_user.email %></p>
+  <% end %>
 <%= yield %>
 
 </body>
