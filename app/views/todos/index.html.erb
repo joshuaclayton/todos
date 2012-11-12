@@ -1,0 +1,7 @@
+<%= link_to 'Create a new todo', new_todo_path %>
+
+<ol class='todos'>
+  <% @todos.each do |todo| %>
+    <li><%= todo.title %></li>
+  <% end %>
+</ol>

@@ -29,9 +29,4 @@ feature 'Viewing the homepage' do
   def view_homepage
     visit root_path
   end
-
-  def sign_in_as(email)
-    fill_in 'Email', with: email
-    click_button 'Sign in'
-  end
 end
