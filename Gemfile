@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'high_voltage'
 
 group :development, :test do
+  gem 'guard-spork'
   gem 'rspec-rails'
   gem 'capybara'
 end
