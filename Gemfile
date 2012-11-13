@@ -18,6 +18,8 @@ group :test do
   gem 'database_cleaner'
   gem 'timecop'
   gem 'simplecov', require: false
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
 end
 
 # Gems used only for assets and not required

@@ -18,8 +18,8 @@ describe User, '#todos' do
   it 'returns todos whose owner is the user email' do
     user = User.new('john@example.com')
 
-    todo_owned_by_me = Todo.create!(owner: user)
-    todo_not_owned_by_me = Todo.create!
+    todo_owned_by_me = create(:todo, owner: user)
+    todo_not_owned_by_me = create(:todo)
 
     expect(user.todos).to eq [todo_owned_by_me]
   end
