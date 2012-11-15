@@ -49,8 +49,6 @@ feature 'Manage todos' do
       click_link 'Create a new todo'
       fill_in 'Title', with: title
       click_button 'Create'
-
-      self
     end
 
     def mark_complete
