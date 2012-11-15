@@ -33,16 +33,15 @@ feature 'Manage todos' do
   end
 
   def todo_titled(title)
-    todo = Todo.where(title: title).first_or_initialize
-    TodoOnPage.new(todo)
+    TodoOnPage.new(title)
   end
 
-  class TodoOnPage < Struct.new(:todo)
+  class TodoOnPage < Struct.new(:title)
     include Capybara::DSL
 
     def create
       click_link 'Create a new todo'
-      fill_in 'Title', with: todo.title
+      fill_in 'Title', with: title
       click_button 'Create'
     end
 
@@ -55,17 +54,17 @@ feature 'Manage todos' do
     end
 
     def visible?
-      todo_list.has_css? 'li', text: todo.title
+      todo_list.has_css? 'li', text: title
     end
 
     def complete?
-      todo_list.has_css? 'li.complete', text: todo.title
+      todo_list.has_css? 'li.complete', text: title
     end
 
     private
 
     def todo_element
-      find "[data-id='#{todo.id}']"
+      find 'li', text: title
     end
 
     def todo_list

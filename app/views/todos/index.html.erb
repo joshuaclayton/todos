@@ -2,7 +2,7 @@
 
 <ol class='todos'>
   <% @todos.each do |todo| %>
-    <li data-id='<%= todo.id %>' class='<%= 'complete' if todo.completed? %>'>
+    <li class='<%= 'complete' if todo.completed? %>'>
       <%= todo.title %>
       <% if !todo.completed? %>
         <%= link_to 'Complete', todo_completion_path(todo), method: :post %>
