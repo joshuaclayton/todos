@@ -3,37 +3,43 @@ require 'spec_helper'
 feature 'Manage todos' do
   scenario 'create a new todo' do
     sign_in_as 'person@example.com'
-    todo_titled('Buy eggs').create
+    todo = todo_on_page
+    todo.create
 
-    expect(todo_titled('Buy eggs')).to be_visible
+    expect(todo).to be_visible
   end
 
   scenario 'view only todos the user has created' do
     sign_in_as 'other@example.com'
-    todo_titled('Lay eggs').create
+    todo = todo_on_page
+    todo.create
 
     sign_in_as 'me@example.com'
 
-    expect(todo_titled('Lay eggs')).not_to be_visible
+    expect(todo).not_to be_visible
   end
 
   scenario 'complete my todos' do
     sign_in_as 'person@example.com'
-    todo_titled('Buy eggs').create
-    todo_titled('Buy eggs').mark_complete
-    expect(todo_titled('Buy eggs')).to be_complete
+    todo = todo_on_page
+    todo.create
+    todo.mark_complete
+
+    expect(todo).to be_complete
   end
 
   scenario 'mark completed todo as incomplete' do
     sign_in_as 'person@example.com'
-    todo_titled('Buy eggs').create
-    todo_titled('Buy eggs').mark_complete
-    todo_titled('Buy eggs').mark_incomplete
-    expect(todo_titled('Buy eggs')).not_to be_complete
+    todo = todo_on_page
+    todo.create
+    todo.mark_complete
+    todo.mark_incomplete
+
+    expect(todo).not_to be_complete
   end
 
-  def todo_titled(title)
-    TodoOnPage.new(title)
+  def todo_on_page
+    TodoOnPage.new('Buy eggs')
   end
 
   class TodoOnPage < Struct.new(:title)
@@ -43,6 +49,8 @@ feature 'Manage todos' do
       click_link 'Create a new todo'
       fill_in 'Title', with: title
       click_button 'Create'
+
+      self
     end
 
     def mark_complete
