@@ -47,41 +47,29 @@ feature 'Manage todos' do
     end
 
     def mark_complete
-      within_todo do
-        click_link 'Complete'
-      end
+      todo_element.click_link 'Complete'
     end
 
     def mark_incomplete
-      within_todo do
-        click_link 'Incomplete'
-      end
+      todo_element.click_link 'Incomplete'
     end
 
     def visible?
-      within_todo_list do
-        page.has_css? 'li', text: todo.title
-      end
+      todo_list.has_css? 'li', text: todo.title
     end
 
     def complete?
-      within_todo_list do
-        page.has_css? 'li.complete', text: todo.title
-      end
+      todo_list.has_css? 'li.complete', text: todo.title
     end
 
     private
 
-    def within_todo
-      within "[data-id='#{todo.id}']" do
-        yield
-      end
+    def todo_element
+      find "[data-id='#{todo.id}']"
     end
 
-    def within_todo_list
-      within 'ol.todos' do
-        yield
-      end
+    def todo_list
+      find 'ol.todos'
     end
   end
 end
