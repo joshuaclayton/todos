@@ -12,5 +12,4 @@ feature 'User creates todo' do
     fill_in 'Title', with: title
     click_on 'Submit'
   end
-
 end
