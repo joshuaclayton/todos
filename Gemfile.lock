@@ -51,6 +51,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.4.0)
+    high_voltage (1.2.2)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -138,6 +139,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 2.0.3)
   coffee-rails
+  high_voltage
   jquery-rails
   rails (~> 3.2.13)
   rspec-rails (~> 2.13.0)
