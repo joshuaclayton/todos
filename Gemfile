@@ -13,6 +13,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.2.0'
+  gem 'timecop'
 end
 
 group :assets do
