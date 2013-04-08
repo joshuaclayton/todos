@@ -13,14 +13,4 @@ feature 'User creates todo' do
     click_on 'Submit'
   end
 
-  def sign_in_as(email_address)
-    visit '/'
-    click_on 'Sign in'
-    fill_in 'Email address', with: email_address
-    click_on 'Sign in'
-  end
-
-  def has_todo?(title)
-
-  end
 end
