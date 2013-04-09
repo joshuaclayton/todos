@@ -14,16 +14,26 @@ class TodoOnPage
   end
 
   def complete
-    within "li:contains('#{@title}')" do
+    within todo_element do
       click_on 'Mark complete'
     end
   end
 
   def completed?
-    page.has_css? 'li.complete', text: @title
+    todo_element.native['class'].include? 'complete'
   end
 
   def present?
-    page.has_css? 'li', text: @title
+    begin
+      !!todo_element
+    rescue Capybara::ElementNotFound
+      false
+    end
+  end
+
+  private
+
+  def todo_element
+    find 'li', text: @title
   end
 end
