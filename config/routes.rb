@@ -4,6 +4,6 @@ Todos::Application.routes.draw do
   resource :session, only: [:new, :create]
 
   resources :todos, only: [:index, :new, :create] do
-    resource :completion, only: [:create]
+    resource :completion, only: [:create, :destroy]
   end
 end

@@ -25,6 +25,12 @@ class TodoOnPage
     end
   end
 
+  def incomplete
+    within todo_element do
+      click_on 'Mark incomplete'
+    end
+  end
+
   def completed?
     todo_element.native['class'].include? 'complete'
   end

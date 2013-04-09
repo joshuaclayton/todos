@@ -28,3 +28,15 @@ describe Todo, '#mark_complete' do
     end
   end
 end
+
+describe Todo, '#mark_incomplete' do
+  it 'sets completed_at to nil' do
+    Timecop.freeze do
+      todo = create :todo, :completed
+      todo.mark_incomplete
+      todo.reload
+
+      expect(todo.completed_at).to be_nil
+    end
+  end
+end
