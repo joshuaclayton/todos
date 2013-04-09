@@ -6,6 +6,12 @@ class TodoOnPage
     @title = title
   end
 
+  def self.create(title)
+    new(title).tap do |todo|
+      todo.create
+    end
+  end
+
   def create
     visit todos_path
     click_on 'Add a Todo'
