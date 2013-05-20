@@ -2,6 +2,9 @@
 
 <ul>
   <% @todos.each do |todo| %>
-    <li><%= todo.title %></li>
+    <li data-id='<%= todo.id %>' data-state='<%= todo.state %>'>
+      <%= todo.title %>
+      <%= link_to 'Complete', todo_completion_path(todo), method: :post %>
+    </li>
   <% end %>
 </ul>
