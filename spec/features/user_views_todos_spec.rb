@@ -6,9 +6,7 @@ feature 'User views todos' do
       todo.owner_email = 'other@example.com'
     end.save!
 
-    visit root_path
-    fill_in 'Email address', with: 'person@example.com'
-    click_on 'Sign in'
+    sign_in_as 'person@example.com'
 
     expect(page).not_to have_css 'li', text: 'Other todo'
   end
