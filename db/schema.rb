@@ -11,17 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408205448) do
+ActiveRecord::Schema.define(:version => 20130520155301) do
 
   create_table "todos", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "owner"
-    t.datetime "completed_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "todos", ["completed_at"], :name => "index_todos_on_completed_at"
-  add_index "todos", ["owner"], :name => "index_todos_on_owner"
 
 end
