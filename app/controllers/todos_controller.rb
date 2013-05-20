@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = Todo.where(owner_email: session[:current_email])
   end
 
   def new
@@ -8,7 +8,10 @@ class TodosController < ApplicationController
   end
 
   def create
-    Todo.create params[:todo]
+    Todo.new(params[:todo]) do |todo|
+      todo.owner_email = session[:current_email]
+    end.save
+
     redirect_to todos_path
   end
 end
