@@ -2,9 +2,7 @@ require 'spec_helper'
 
 feature 'User views todos' do
   scenario 'only sees todos they created' do
-    Todo.new(title: 'Other todo') do |todo|
-      todo.owner_email = 'other@example.com'
-    end.save!
+    create :todo, title: 'Other todo', owner_email: 'other@example.com'
 
     sign_in_as 'person@example.com'
 

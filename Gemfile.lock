@@ -47,6 +47,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     high_voltage (1.2.2)
     hike (1.2.1)
     i18n (0.6.1)
@@ -130,6 +135,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 2.1.0)
   coffee-rails
+  factory_girl_rails
   high_voltage
   jquery-rails
   rails (~> 3.2.13)
