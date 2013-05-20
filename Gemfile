@@ -9,6 +9,7 @@ group :development, :test do
   gem 'capybara', '~> 2.1.0'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'timecop'
 end
 
 group :assets do

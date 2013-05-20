@@ -9,4 +9,12 @@ class Todo < ActiveRecord::Base
       'incomplete'
     end
   end
+
+  def mark_complete
+    touch :completed_at
+  end
+
+  def mark_incomplete
+    update_attribute :completed_at, nil
+  end
 end
