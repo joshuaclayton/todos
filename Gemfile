@@ -10,6 +10,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'timecop'
+  gem 'simplecov', require: false
 end
 
 group :assets do
