@@ -11,11 +11,6 @@ feature 'Guest signs in' do
     expect(page).to display_welcome_message('person@example.com')
   end
 
-  def sign_in_with(email)
-    fill_in 'Email', with: email
-    click_on 'Sign in'
-  end
-
   def display_welcome_message(email = nil)
     have_css '[data-role="welcome"]', text: email
   end

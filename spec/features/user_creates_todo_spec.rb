@@ -11,10 +11,4 @@ feature 'User creates todo' do
       expect(page).to have_css 'li', text: 'Buy milk'
     end
   end
-
-  def sign_in
-    visit root_path
-    fill_in 'Email', with: 'person@example.com'
-    click_on 'Sign in'
-  end
 end
