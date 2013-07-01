@@ -9,6 +9,10 @@
 <body>
   <header>
     Todos
+
+    <% if current_email %>
+      <p data-role='welcome'>Welcome, <%= current_email %>!</p>
+    <% end %>
   </header>
 <%= yield %>
 

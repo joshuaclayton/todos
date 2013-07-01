@@ -1,1 +1,7 @@
 <p data-role='description'>Welcome to the Todos app!</p>
+
+<%= form_for :session, url: session_path do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <%= form.submit 'Sign in' %>
+<% end %>
