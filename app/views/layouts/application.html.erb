@@ -10,8 +10,8 @@
   <header>
     Todos
 
-    <% if current_email %>
-      <p data-role='welcome'>Welcome, <%= current_email %>!</p>
+    <% if current_user.signed_in? %>
+      <p data-role='welcome'>Welcome, <%= current_user.display_name %>!</p>
     <% end %>
   </header>
 <%= yield %>

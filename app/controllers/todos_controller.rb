@@ -1,13 +1,11 @@
 class TodosController < ApplicationController
   def index
     @todo = Todo.new
-    @todos = Todo.where(owner_email: current_email)
+    @todos = current_user.todos
   end
 
   def create
-    todo = Todo.new(todo_params)
-    todo.owner_email = current_email
-    todo.save
+    current_user.todos.create(todo_params)
     redirect_to todos_path
   end
 
