@@ -1,6 +1,17 @@
 class CompletionsController < ApplicationController
   def create
-    current_user.todos.find(params[:todo_id]).touch :completed_at
+    todo.mark_complete
     redirect_to todos_path
+  end
+
+  def destroy
+    todo.mark_incomplete
+    redirect_to todos_path
+  end
+
+  private
+
+  def todo
+    current_user.todos.find(params[:todo_id])
   end
 end

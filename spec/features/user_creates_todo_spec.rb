@@ -4,11 +4,9 @@ feature 'User creates todo' do
   scenario 'successfully with a title' do
     sign_in
 
-    fill_in 'Title', with: 'Buy milk'
-    click_on 'Create Todo'
+    todo_on_page = TodoOnPage.new('Buy milk')
+    todo_on_page.create
 
-    within 'ul.todos' do
-      expect(page).to have_css 'li', text: 'Buy milk'
-    end
+    expect(todo_on_page).to be_visible
   end
 end
