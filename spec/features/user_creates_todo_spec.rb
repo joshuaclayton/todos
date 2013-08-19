@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Guest creates todo' do
+feature 'User creates todo' do
   scenario 'creates a new todo' do
     create_todo_named 'Buy milk'
 
@@ -9,6 +9,9 @@ feature 'Guest creates todo' do
 
   def create_todo_named(name)
     visit root_path
+    click_on 'Sign in'
+    fill_in 'Email', with: 'me@example.com'
+    click_on 'Submit'
     click_on 'Add new todo'
     fill_in 'Name', with: name
     click_on 'Submit'
