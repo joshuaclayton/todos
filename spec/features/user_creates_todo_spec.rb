@@ -2,8 +2,11 @@ require 'spec_helper'
 
 feature 'User creates todo' do
   scenario 'creates a new todo' do
-    create_todo_named 'Buy milk'
+    sign_in
 
-    expect(page).to display_todo_named('Buy milk')
+    todo_on_page = TodoOnPage.new('Buy milk')
+    todo_on_page.create
+
+    expect(todo_on_page).to be_visible
   end
 end
