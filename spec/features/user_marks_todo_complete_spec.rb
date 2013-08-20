@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'User marks todo complete' do
+feature 'User marks todo complete', js: true do
   scenario 'updates todo as completed' do
     sign_in
 
