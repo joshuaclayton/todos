@@ -96,6 +96,10 @@ GEM
       sprockets-rails (~> 2.0.0)
     shoulda-matchers (2.2.0)
       activesupport (>= 3.0.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -132,5 +136,6 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   sass-rails
   shoulda-matchers (~> 2.2.0)
+  simplecov
   sqlite3
   uglifier
